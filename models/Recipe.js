@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const serviceSchema = new Schema(
+const recipeSchema = new Schema(
   {
     name: {
       type: String,
@@ -24,9 +24,9 @@ const serviceSchema = new Schema(
   { timestamps: true }
 );
 
-const Service = mongoose.model("Service", serviceSchema);
+const Recipe = mongoose.model("Recipe", recipeSchema);
 
 module.exports = {
-  Service,
-  serviceSchema,
+  Recipe,
+  recipeSchema,
 };
