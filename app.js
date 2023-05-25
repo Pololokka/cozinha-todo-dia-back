@@ -6,8 +6,11 @@ app.use(cors());
 
 app.use(express.json());
 
+//DB connection
+const conn = require("./db/conn");
+
+conn();
+
 app.listen(5173, function () {
   console.log("Servidor Online");
 });
-
-//Fb0oauUTlBrenZ7E
