@@ -64,6 +64,25 @@ const serviceController = {
       console.log(`Erro: ${error}`);
     }
   },
+
+  update: async (req, res) => {
+    const id = req.params.id;
+    const recipe = {
+      name: req.body.name,
+      ingredients: req.body.ingredients,
+      method: req.body.method,
+      image: req.body.image,
+    };
+
+    const updateRecipe = await RecipeModel.findByIdAndUpdate(id, recipe);
+
+    if (!updateRecipe) {
+      res.status(404).json({ msg: "Receita não encontrada" });
+      return;
+    }
+
+    res.status(200).json({ recipe, msg: "Receita atualizada!" });
+  },
 };
 
 module.exports = serviceController;

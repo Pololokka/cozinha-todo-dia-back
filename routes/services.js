@@ -14,4 +14,8 @@ router
   .route("/recipes/:id")
   .delete((req, res) => serviceController.delete(req, res));
 
+router
+  .route("/recipes/:id")
+  .put((req, res) => serviceController.update(req, res));
+
 module.exports = router;
