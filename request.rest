@@ -19,4 +19,8 @@ GET http://localhost:5173/api/recipes/6470b38f5e64938acda942d1
 
 ###
 
-GET http://localhost:5173/api/recipes/6470b38f5e64938acda942d
+GET http://localhost:5173/api/recipes/6470b38f5e64938acda942d5
+
+###
+
+GET http://localhost:5173/api/recipes/6470b38f5e64938acda942d5

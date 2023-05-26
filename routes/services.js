@@ -10,4 +10,8 @@ router
   .route("/recipes/:id")
   .get((req, res) => serviceController.getSingle(req, res));
 
+router
+  .route("/recipes/:id")
+  .delete((req, res) => serviceController.delete(req, res));
+
 module.exports = router;

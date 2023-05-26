@@ -46,6 +46,24 @@ const serviceController = {
       console.log(`Erro: ${error}`);
     }
   },
+
+  delete: async (req, res) => {
+    try {
+      const id = req.params.id;
+      const recipe = await RecipeModel.findById(id);
+
+      if (!recipe) {
+        res.status(404).json({ msg: "Receita não encontrada" });
+        return;
+      }
+
+      const deleteRecipe = await RecipeModel.findByIdAndDelete(id);
+
+      res.status(200).json({ deleteRecipe, msg: "Receita excluída!" });
+    } catch (error) {
+      console.log(`Erro: ${error}`);
+    }
+  },
 };
 
 module.exports = serviceController;
