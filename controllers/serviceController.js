@@ -36,6 +36,11 @@ const serviceController = {
       const id = req.params.id;
       const recipe = await RecipeModel.findById(id);
 
+      if (!recipe) {
+        res.status(404).json({ msg: "Receita não encontrada" });
+        return;
+      }
+
       res.json(recipe);
     } catch (error) {
       console.log(`Erro: ${error}`);
