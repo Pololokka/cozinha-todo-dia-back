@@ -10,6 +10,11 @@ const serviceController = {
         image: req.body.image,
       };
 
+      if (recipe.ingredients.length <= 0 || !recipe.ingredients.length) {
+        res.status(406).json({ msg: "Insira ao menos um ingrediente!" });
+        return;
+      }
+
       const response = await RecipeModel.create(recipe);
 
       res.status(201).json({
