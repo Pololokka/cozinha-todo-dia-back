@@ -45,7 +45,7 @@ Content-Type: application/json
 
 {
     "name": "Teste",
-    "ingredients": ["teste"],
+    "ingredients": [],
     "method": "teste teste teste",
     "image": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fi2.wp.com%2Ffiles.agro20.com.br%2Fuploads%2F2020%2F03%2Fcomidabrasileira3.jpg%3Ffit%3D1024%252C585%26ssl%3D1&tbnid=Rs_vr423v9KaBM&vet=12ahUKEwiD1euoipP_AhVDMLkGHV5QAYkQMygBegUIARDnAQ..i&imgrefurl=https%3A%2F%2Fagro20.com.br%2Fcomida-brasileira%2F&docid=LL0GGkRjcg0dyM&w=1024&h=585&q=comida&client=opera-gx&ved=2ahUKEwiD1euoipP_AhVDMLkGHV5QAYkQMygBegUIARDnAQ"
 
