@@ -1,4 +1,4 @@
-POST http://localhost:5173/api/recipes
+POST http://localhost:3000/api/recipes
 Content-Type: application/json
 
 {
@@ -11,23 +11,23 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:5173/api/recipes
+GET http://localhost:3000/api/recipes
 
 ###
 
-GET http://localhost:5173/api/recipes/6470b38f5e64938acda942d1
+GET http://localhost:3000/api/recipes/6470b38f5e64938acda942d1
 
 ###
 
-GET http://localhost:5173/api/recipes/6470b38f5e64938acda942d5
+GET http://localhost:3000/api/recipes/6470b38f5e64938acda942d5
 
 ###
 
-DELETE  http://localhost:5173/api/recipes/6470c6fa3d4ac1406575e73d
+DELETE  http://localhost:3000/api/recipes/6470c6fa3d4ac1406575e73d
 
 ###
 
-PUT  http://localhost:5173/api/recipes/6470b38f5e64938acda942d1
+PUT  http://localhost:3000/api/recipes/6470b38f5e64938acda942d1
 Content-Type: application/json
 
 {
@@ -40,7 +40,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:5173/api/recipes
+POST http://localhost:3000/api/recipes
 Content-Type: application/json
 
 {
