@@ -12,10 +12,32 @@ app.use(express.json());
 
 //DB connection
 const conn = require("./db/conn");
-
 conn();
 
+//Model
+const User = require("./models/User");
+
 //Routes
+app.post("/auth/register", async (req, res) => {
+  const { name, email, password, confirmPassword } = req.body;
+
+  if (!name) {
+    return res.status(422).json({ msg: "Favor preencher o nome!" });
+  }
+
+  if (!email) {
+    return res.status(422).json({ msg: "Favor preencher o email!" });
+  }
+
+  if (!password) {
+    return res.status(422).json({ msg: "Favor preencher a senha!" });
+  }
+
+  if (password !== confirmPassword) {
+    return res.status(422).json({ msg: "As senhas não batem!" });
+  }
+});
+
 const routes = require("./routes/router");
 
 app.use("/api", routes);
