@@ -18,6 +18,8 @@ conn();
 const User = require("./models/User");
 
 //Routes
+
+//// CRIAR USER E LOGIN ////
 app.post("/auth/register", async (req, res) => {
   const { name, email, password, confirmPassword } = req.body;
 
@@ -36,7 +38,75 @@ app.post("/auth/register", async (req, res) => {
   if (password !== confirmPassword) {
     return res.status(422).json({ msg: "As senhas não batem!" });
   }
+
+  const userExist = await User.findOne({ email: email });
+
+  if (userExist) {
+    return res.status(422).json({ msg: "Email já cadastrado!" });
+  }
+
+  const salt = await bcrypt.genSalt(12);
+  const passwordHash = await bcrypt.hash(password, salt);
+
+  const user = new User({
+    name,
+    email,
+    password: passwordHash,
+  });
+
+  try {
+    await user.save();
+    res.status(201).json({ msg: "Usuário criado com sucesso!" });
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .json({ msg: `Erro no servidor. Tente novamente mais tarde!` });
+  }
 });
+
+app.post("/auth/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email) {
+    return res.status(422).json({ msg: "Favor preencher o email!" });
+  }
+
+  if (!password) {
+    return res.status(422).json({ msg: "Favor preencher a senha!" });
+  }
+
+  const userExist = await User.findOne({ email: email });
+
+  if (!userExist) {
+    return res.status(404).json({ msg: "Chef não encontrado!" });
+  }
+
+  const checkPassword = await bcrypt.compare(password, userExist.password);
+
+  if (!checkPassword) {
+    return res.status(422).json({ msg: "Senha incorreta!" });
+  }
+
+  try {
+    const secret = process.env.SECRET;
+    const token = jwt.sign(
+      {
+        id: userExist._id,
+      },
+      secret
+    );
+
+    res.status(200).json({ msg: "Login feito com sucesso!", token });
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .json({ msg: `Erro no servidor. Tente novamente mais tarde!` });
+  }
+});
+
+//// POSTAR RECEITA ////
 
 const routes = require("./routes/router");
 

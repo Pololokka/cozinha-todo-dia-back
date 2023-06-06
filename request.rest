@@ -51,3 +51,26 @@ Content-Type: application/json
 
 }
 
+//// USUÁRIO ////
+
+###
+
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "name": "Teste",
+    "email": "teste@teste.com",
+    "password": "teste",
+    "confirmPassword": "teste"
+}
+
+###
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "teste@teste.com",
+    "password": "teste"
+}
