@@ -1,21 +1,63 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![technology - React](https://img.shields.io/badge/React-orange) ![technology - JS](https://img.shields.io/badge/JavaScript-yellow)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# Link Tree
+# Cozinha Todo Dia - Back
 
-link tree
+API de um site de receitas
 
 ## Tecnologias
 
-- HTML
-- CSS
-- JavaScript
-- React
+- MongoDB
+- Mongoose
+- NodeJS
 
-## Escopo do projeto
+## Projeto
 
-### Home
+Neste projeto, um usuário pode fazer cadastro no site, assim como logar, visualizar, postar, editar, e excluir receitas.
 
-Página onde o usuário pode adicionar seus links
+## Uso
+
+### Receitas
+
+Caso queira utilizar este projeto, para ter acesso ao sistema de receitas, é necessário utilizar a URL "https://cozinha-todo-dia-api.onrender.com/api/recipes".
+
+Para puxar as receitas que já estão no banco(GET), seja puxando só uma, ou todas, basta utilizar o link providenciado acima.
+
+Para adicionar(POST) ou alterar(PUT) uma receita, é necessário providenciar uma string de nome, método, e imagem(link da imagem), e um array de ingredientes, conforme código abaixo.
+
+"const postData = {
+name: state.name,
+ingredients: state.ingredients,
+method: state.method,
+image: state.image,
+};"
+
+As receitas possuem um ID que vem do banco de dados, para alterar ou visualizar somente uma receita, basta utilizar este ID na URL(https://cozinha-todo-dia-api.onrender.com/api/recipes/{ID}).
+
+### Login
+
+Para utilizar a parte de contas, a URL é a "https://cozinha-todo-dia-api.onrender.com/auth/register".
+
+Similar ao sistema de criação de receita, é necessário passar 4 strings ao criar uma conta(nome, email, senha, e confirmação de senha), conforme exemplo abaixo.
+
+"const postData = {
+name: state.name,
+email: state.email,
+password: state.password,
+confirmPassword: state.confirmPassword,
+};"
+
+Para o login, somente é necessário passar o email e a senha do usuário, conforme abaixo.
+
+"const postData = {
+email: state.email,
+password: state.password,
+};"
+
+Ambos os métodos(login e criação de conta) utilizam o POST.
+
+## Melhorias
+
+É sabido que a coleta de dados do método de preparo não é das melhores, uma vez que ele utiliza uma string, então não são consideradas quebras de linha. No futuro pretendo estudar como melhorar essa parte, e implementar uma nova solução.
 
 ## Sobre
 
